@@ -11,7 +11,8 @@ class CompanyView(APIView):
         try:
             company_service = CompanyService()
             companies = company_service.get_all_companies()
-            return response_builder.result_object(companies).success().ok_200().get_response()
+            field_to_know = response_builder.result_object(companies).success().ok_200().get_response()
+            return field_to_know
         except Exception as e:
             print(f"CompanyView get :: exception:: {e}")
             return response_builder.result_object({'message': "Unable to get companies"}).fail().internal_error_500().message("Internal Error").get_response()
