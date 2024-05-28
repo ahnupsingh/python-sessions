@@ -10,7 +10,7 @@ def flatten_dict(dictionary: dict, parent_key = '') -> dict:
         else:
             new_key = key
         
-        if type(value) == type({}):
+        if isinstance(type, dict):
             items.extend(flatten_dict(value, new_key).items())
         else:
             items.append((new_key, value))
@@ -31,6 +31,19 @@ nested_dict = {
     },
     'h': 5
 }
+nested_dict = {  
+    'a': 1,  
+    'b': {  
+        'c': 2,  
+        'd': {  
+            'a': 3,  
+            'f': {  
+                'b': 4  
+            }  
+        }  
+    },  
+    'f': 5  
+}  
 
 flattened_dict = flatten_dict(nested_dict)
 print(flattened_dict)

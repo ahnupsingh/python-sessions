@@ -4,10 +4,7 @@ def find_most_frequent(numbers: List[int]) -> int:
     """ """
     count_of_numbers = {}
     for number in numbers:
-        if count_of_numbers.get(number):
-            count_of_numbers[number] +=1
-        else:
-            count_of_numbers[number] = 1
+        count_of_numbers[number] = count_of_numbers.get(number, 0) + 1
     
     max_count_number = None
     max_count = 0
