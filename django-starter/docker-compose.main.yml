@@ -1,12 +1,11 @@
 version: '3.8'
 
 services:
-  nl2query-be:
+  ramailo-be:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nl2query
-    image: 277304117720.dkr.ecr.ap-south-1.amazonaws.com/nl2query-be:dev
+    container_name: ramailo
     command: "gunicorn -w 2 -b 0.0.0.0:8000 --worker-class gevent --log-level debug project.wsgi:application"
     restart: always
     ports:
@@ -14,8 +13,8 @@ services:
     env_file:
       - .env
     networks:
-      - nl2query
+      - ramailo
     
 networks:
-    nl2query:
+    ramailo:
       driver: bridge

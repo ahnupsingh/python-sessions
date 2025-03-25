@@ -19,3 +19,7 @@ The goal is to create a service that
 
 ## Notes
 The solution will involve multiple components like a service, API, and database integration.
+
+## Resources
+Use django management commands
+https://marketstack.com/

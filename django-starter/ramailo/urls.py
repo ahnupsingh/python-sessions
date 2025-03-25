@@ -21,6 +21,9 @@ utils_paths = [
 api_paths = [
     path('companies/', CompanyView.as_view(), name='company'),
     path('companies/<uuid:company_id>', CompanyDetailView.as_view(), name='company_details'),
+    path('user/:id/profile', UserProfileApi, name='user_profile'),
+    path('user/me', UserMyProfileApi, name='user_profile'),
+    path('user/:id/account', UserAccountApi, name='user_profile'),
 ]
 
 urlpatterns = utils_paths + api_paths
