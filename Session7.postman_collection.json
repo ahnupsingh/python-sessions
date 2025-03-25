@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "fd282d13-0fea-4ce7-8f98-6f0c6508312b",
+		"name": "Session 7",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7381454",
+		"_collection_link": "https://bold-star-811078.postman.co/workspace/Ramailo~1d488f82-49ad-4391-95f8-a62dda9195cf/collection/7381454-fd282d13-0fea-4ce7-8f98-6f0c6508312b?action=share&source=collection_link&creator=7381454"
+	},
+	"item": [
+		{
+			"name": "Get User Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// Pre-request script to set auth token",
+							"pm.environment.set('auth_token', '123456789abcdef');"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// Tests to validate response",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response contains user name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('name');",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

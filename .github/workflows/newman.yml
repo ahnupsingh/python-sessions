@@ -1,0 +1,28 @@
+name: Run Newman
+
+on:
+  # push:
+  workflow_dispatch:
+
+jobs:
+  run-newman:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install -g newman
+
+      - name: Run Newman
+        run: npx newman run Session7.postman_collection.json
